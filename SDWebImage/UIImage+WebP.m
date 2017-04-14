@@ -75,7 +75,8 @@ static void FreeImageData(void *info, const void *data, size_t size) {
     
     UIImage *finalImage = nil;
 #if SD_UIKIT || SD_WATCH
-    finalImage = [UIImage animatedImageWithImages:images duration:duration];
+    NSTimeInterval aniDuration = [images count] * 0.25;
+    finalImage = [UIImage animatedImageWithImages:images duration:aniDuration];
 #elif SD_MAC
     if ([images count] > 0) {
         finalImage = images[0];
